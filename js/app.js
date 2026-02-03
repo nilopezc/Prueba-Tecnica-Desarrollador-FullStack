@@ -1,5 +1,29 @@
 var app = angular.module('deporteApp', ['dx']);
 
 app.controller('MainController', function($scope, $http) {
-    console.log("¡Aplicación de Deporte Virtual lista!");
+    $http.get('data/datos.json').then(function(response) {
+        $scope.dataSource = response.data;
+        
+        $scope.gridOptions = {
+            dataSource: $scope.dataSource,
+            columns: [
+                { dataField: "id", caption: "ID", width: 50 },
+                { dataField: "atleta", caption: "Nombre del Atleta" },
+                { dataField: "deporte", caption: "Disciplina" },
+                { dataField: "puntaje", caption: "Puntaje", dataType: "number" },
+                { dataField: "fecha", caption: "Fecha de Registro", dataType: "date" },
+                { dataField: "estado", caption: "Estado" }
+            ],
+            searchPanel: {
+                visible: true,
+                width: 240,
+                placeholder: "Buscar atleta..."
+            },
+            showBorders: true,
+            rowAlternationEnabled: true,
+            paging: {
+                pageSize: 5
+            }
+        };
+    });
 });
