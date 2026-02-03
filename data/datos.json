@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "atleta": "Juan Pérez",
+    "deporte": "Carrera 100m",
+    "puntaje": 85,
+    "fecha": "2026-01-15",
+    "estado": "Completado"
+  },
+  {
+    "id": 2,
+    "atleta": "María García",
+    "deporte": "Salto Largo",
+    "puntaje": 92,
+    "fecha": "2026-01-16",
+    "estado": "Completado"
+  },
+  {
+    "id": 3,
+    "atleta": "Carlos Ruiz",
+    "deporte": "Natación",
+    "puntaje": 78,
+    "fecha": "2026-01-17",
+    "estado": "Pendiente"
+  },
+  {
+    "id": 4,
+    "atleta": "Ana López",
+    "deporte": "Ciclismo",
+    "puntaje": 88,
+    "fecha": "2026-01-18",
+    "estado": "Completado"
+  },
+  {
+    "id": 5,
+    "atleta": "Luis Torres",
+    "deporte": "Carrera 100m",
+    "puntaje": 95,
+    "fecha": "2026-01-19",
+    "estado": "Completado"
+  }
+]
