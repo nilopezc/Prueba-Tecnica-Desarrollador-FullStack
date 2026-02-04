@@ -1,11 +1,16 @@
 var app = angular.module('deporteApp', ['dx']);
 
 app.controller('MainController', function($scope, $http) {
+    $scope.dataSource = [];
+    $scope.chartData = [];
+
     $http.get('data/datos.json').then(function(response) {
         $scope.dataSource = response.data;
-
+        $scope.chartData = angular.copy($scope.dataSource);
+        
         $scope.gridOptions = {
             dataSource: $scope.dataSource,
+            selection: { mode: "single" },
             columns: [
                 { dataField: "id", caption: "ID", width: 50 },
                 { dataField: "atleta", caption: "Nombre del Atleta" },
@@ -14,23 +19,32 @@ app.controller('MainController', function($scope, $http) {
                 { dataField: "fecha", caption: "Fecha de Registro", dataType: "date" },
                 { dataField: "estado", caption: "Estado" }
             ],
-            searchPanel: { visible: true, width: 240, placeholder: "Buscar atleta..." },
-            showBorders: true,
-            rowAlternationEnabled: true
+            onSelectionChanged: function(selectedItems) {
+                var data = selectedItems.selectedRowsData[0];
+                if (data) {
+                    $scope.chartData = [data];
+                } else {
+                    $scope.chartData = angular.copy($scope.dataSource);
+                }
+                $scope.$apply(); 
+            },
+            searchPanel: { visible: true, width: 240 },
+            showBorders: true
         };
 
         $scope.chartOptions = {
-            dataSource: $scope.dataSource,
+            bindingOptions: {
+                dataSource: 'chartData'
+            },
             series: {
                 argumentField: "atleta",
                 valueField: "puntaje",
-                name: "Puntaje por Atleta",
+                name: "Puntaje",
                 type: "bar",
-                color: "#1e88e5"
+                color: "#ff5722"
             },
-            title: "Rendimiento de Atletas",
-            legend: { visible: false },
-            export: { enabled: true }
+            title: "Detalle de Rendimiento Seleccionado",
+            legend: { visible: false }
         };
     });
 });
