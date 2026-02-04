@@ -11,7 +11,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
         <script src="https://cdn3.devexpress.com/jslib/22.2.6/js/dx.all.js"></script>
-        <script src="js/app.js"></script>
+        <script src="js/app.js?v=1.2"></script>
     </head>
     <body ng-controller="MainController" class="dx-viewport">
     
@@ -24,7 +24,11 @@
             <main>
                 <section class="grid-section">
                     <h3>Listado de Atletas y Estados</h3>
-                    <div dx-data-grid="gridOptions"></div>
+                    <div dx-data-grid="gridOptions" dx-item-alias="cellInfo">
+                        <div data-options="dxTemplate: { name: 'estadoTemplate' }">
+                            <status-badge status="cellInfo.value"></status-badge>
+                        </div>
+                    </div>
                 </section>
     
                 <section class="chart-section">
