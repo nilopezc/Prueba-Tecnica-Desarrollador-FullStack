@@ -38,10 +38,7 @@ app.controller('MainController', function($scope, $http) {
                     dataField: "estado", 
                     caption: "Estado (Custom)",
                     alignment: "center",
-                    cellTemplate: function(container, options) {
-                        var html = '<status-badge status="\'' + options.value + '\'"></status-badge>';
-                        container.append(html);
-                    }
+                    cellTemplate: "estadoTemplate" 
                 }
             ],
             onSelectionChanged: function(selectedItems) {
