@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html ng-app="deporteApp">
-    <head>
-        <meta charset="UTF-8">
-        <title>Prueba Técnica - Deporte Virtual</title>
-        
-        <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/22.2.6/css/dx.light.css">
-        <link rel="stylesheet" href="css/styles.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Técnica - Deporte Virtual</title>
     
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/22.2.6/css/dx.light.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
-        <script src="https://cdn3.devexpress.com/jslib/22.2.6/js/dx.all.js"></script>
-    
-        <script src="js/app.js"></script>
-    </head>
-    <body ng-controller="MainController">
-    
-        <div class="container">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
+
+    <script src="https://cdn3.devexpress.com/jslib/22.2.6/js/dx.all.js"></script>
+
+    <script src="js/app.js"></script>
+</head>
+<body ng-controller="MainController" class="dx-viewport">
+
+    <div class="container" style="padding: 20px;">
+        <header>
             <h1>Dashboard de Rendimiento Deportivo</h1>
-            
-            <div class="container">
-                <h1>Dashboard de Rendimiento Deportivo</h1>
-                
+            <p>Visualización de datos de atletas - DEPORTE VIRTUAL®</p>
+        </header>
+
+        <main>
+            <section style="margin-bottom: 40px;">
+                <h3>Listado de Atletas</h3>
                 <div dx-data-grid="gridOptions"></div>
-            
-                <hr>
-                
-                <div id="chartContainer"></div>
-            </div>
-            <div id="chartContainer"></div>
-        </div>
-    
-    </body>
+            </section>
+
+            <hr>
+
+            <section style="margin-top: 40px;">
+                <h3>Análisis de Puntajes</h3>
+                <div dx-chart="chartOptions"></div>
+            </section>
+        </main>
+    </div>
+
+</body>
 </html>
