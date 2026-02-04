@@ -3,7 +3,7 @@ var app = angular.module('deporteApp', ['dx']);
 app.controller('MainController', function($scope, $http) {
     $http.get('data/datos.json').then(function(response) {
         $scope.dataSource = response.data;
-        
+
         $scope.gridOptions = {
             dataSource: $scope.dataSource,
             columns: [
@@ -14,16 +14,23 @@ app.controller('MainController', function($scope, $http) {
                 { dataField: "fecha", caption: "Fecha de Registro", dataType: "date" },
                 { dataField: "estado", caption: "Estado" }
             ],
-            searchPanel: {
-                visible: true,
-                width: 240,
-                placeholder: "Buscar atleta..."
-            },
+            searchPanel: { visible: true, width: 240, placeholder: "Buscar atleta..." },
             showBorders: true,
-            rowAlternationEnabled: true,
-            paging: {
-                pageSize: 5
-            }
+            rowAlternationEnabled: true
+        };
+
+        $scope.chartOptions = {
+            dataSource: $scope.dataSource,
+            series: {
+                argumentField: "atleta",
+                valueField: "puntaje",
+                name: "Puntaje por Atleta",
+                type: "bar",
+                color: "#1e88e5"
+            },
+            title: "Rendimiento de Atletas",
+            legend: { visible: false },
+            export: { enabled: true }
         };
     });
 });
